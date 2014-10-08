@@ -1,4 +1,10 @@
 (function($, _) {
+    
+    //change template for sharepoint usage
+    _.templateSettings = {
+        interpolate: /\{\{(.+?)\}\}/g
+    };
+    
     var endpoint = 'http://api.phila.gov/open311/v2/',
         searchTemplate = $('script[data-template="search"]').html(),
         resultTemplate = _.template($('script[data-template="result"]').html()),
