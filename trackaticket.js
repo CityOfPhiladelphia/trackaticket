@@ -13,7 +13,7 @@
     // Get the container by reverse iterating script tags with data-container attribute
     var container = $('body'); // default container
     $($('script[data-container]').get().reverse()).each(function(key, val) {
-        container = $('#' + $(val).attr('data-container')).length ? $('#' + $(val).attr('data-container')) : container;
+        container = $($(val).attr('data-container')).length ? $($(val).attr('data-container')) : container;
     });
     
     // Put the search template into the container
