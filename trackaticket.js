@@ -5,7 +5,7 @@
         interpolate: /\{\{(.+?)\}\}/g
     };
     
-    var endpoint = 'http://api.phila.gov/open311/v2/',
+    var endpoint = 'http://api.phila.gov/staging-open311/v2/',
         searchTemplate = $('script[data-template="search"]').html(),
         resultTemplate = _.template($('script[data-template="result"]').html()),
         errorTemplate = _.template($('script[data-template="error"]').html());
@@ -20,7 +20,7 @@
     container.html(searchTemplate);
     
     // When the search is executed
-    $(container).on('submit', 'form', function(e) {
+    $(container).on('click', 'button', function(e) {
         // Get the value of the textbox
         var ticketId = $('.trackaticket input[type="text"]').val();
         
