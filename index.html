@@ -4,19 +4,22 @@
         <style type="text/css">
             .trackaticket dt { font-weight: bold; }
         </style>
-    </head>
-    <body>
-        <h1>Track a ticket</h1>
-
-        <div id="tracker"></div>
         
+        <!-- Vendor libraries -->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
+        <script src="bootstrap-button-2.3.2.js"></script>
+        
+        <!-- Search template -->
         <script data-template="search" type="text/template">
             <div class="trackaticket">
                 <input type="text">
                 <button type="button">Search</button>
-                <div></div>
+                <div class="result"></div>
             </div>
         </script>
+        
+        <!-- Result template -->
         <script data-template="result" type="text/template">
             <dl>
                 <dt>ID</dt>
@@ -33,12 +36,29 @@
                 <dd></dd>
             </dl>
         </script>
+        
+        <!-- Error template -->
         <script data-template="error" type="text/template">
             <span class="error">Ticket #<b>{{ ticketId }}</b> was not found</span>
         </script>
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
-        <script src="bootstrap-button-2.3.2.js"></script>
-        <script data-container="#tracker" src="trackaticket.js"></script>
+    </head>
+    <body>
+        <h1>Track a ticket</h1>
+
+        <h1>#tracker1</h1>
+        <div id="tracker1" style="border: 1px green solid"></div>
+        
+        <h1>#tracker2</h1>
+        <div id="tracker2" style="border: 1px red solid"></div>
+        
+        <!-- Example of using parent container -->
+        <h1>Parent element with no id</h1>
+        <div style="border:1px black solid">
+            <script src="trackaticket.js"></script>
+        </div>
+        
+        <!-- Example of pointing to container via data-container attribute -->
+        <script data-container="#tracker1" src="trackaticket.js"></script>
+        <script data-container="#tracker2" src="trackaticket.js"></script>
     </body>
 </html>
