@@ -3,7 +3,7 @@ Embeddable 311 service request lookup widget. This tool uses a flexible approach
 
 ## Simple Installation
 Add the `<script src="trackaticket.js"></script>` tag inside the container you'd like to load the widget into, with the `data-css-url` attribute pointing to the CSS file. For example:
-```
+```html
 <div>
     <script data-css-url="trackaticket.css" src="trackaticket.js"></script>
 </div>
@@ -13,7 +13,7 @@ Add the `<script src="trackaticket.js"></script>` tag inside the container you'd
 
 ### Specify the Container
 Instead of putting the `<script>` tag inside the desired container, you can put it anywhere in the document and set the `data-container` attribute to the jQuery selector of the desired container. For example:
-```
+```html
 <div id="tracker"></div>
 
 <script data-container="#tracker" data-css-url="trackaticket.css" src="trackaticket.js"></script>
@@ -24,7 +24,7 @@ Instead of putting the `<script>` tag inside the desired container, you can put 
 The application uses mustache.js-style templates for the markup. Optionally, you can override the default templates by putting any of the following `<script>` tags in your document.
 
 #### Search Template
-```
+```html
 <script data-template="search" type="text/template">
     <div class="trackaticket">
         <input type="text">
@@ -35,7 +35,7 @@ The application uses mustache.js-style templates for the markup. Optionally, you
 ```
 
 #### Result Template
-```
+```html
 <script data-template="result" type="text/template">
     <dl>
         <dt>ID</dt>
@@ -55,7 +55,7 @@ The application uses mustache.js-style templates for the markup. Optionally, you
 ```
 
 #### Error Template
-```
+```html
 <script data-template="error" type="text/template">
     <span class="error">Ticket #<b>{{ ticketId }}</b> was not found!</span>
 </script>
@@ -68,7 +68,7 @@ The `data-css-url` attribute is optional. You can leave it off and include your 
 
 ### Multiple Widgets
 You can embed the widget multiple times, into different containers, using the methods described above. For example:
-```
+```html
 <div id="tracker1"></div>
 <div id="tracker2"></div>
 
@@ -77,7 +77,7 @@ You can embed the widget multiple times, into different containers, using the me
 ```
 You'll have to use the same templates, but you can override the styles by qualifying the parent container. For example:
 
-```
+```css
 #tracker1 .trackaticket { background: red; }
 #tracker2 .trackaticket { background: blue; }
 ```
