@@ -4,6 +4,11 @@ Embeddable 311 service request lookup widget. This tool uses a flexible approach
 ## Simple Installation
 Add the `<script src="trackaticket.js"></script>` tag inside the container you'd like to load the widget into, with the `data-css-url` attribute pointing to the CSS file. For example:
 ```html
+<!-- Dependencies (if they're not already loaded) -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
+<script src="bootstrap-button-2.3.2.js"></script>
+
 <div>
     <script data-css-url="//cityofphiladelphia.github.io/trackaticket/trackaticket.css" src="//cityofphiladelphia.github.io/trackaticket/trackaticket.js"></script>
 </div>
