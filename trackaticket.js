@@ -9,8 +9,16 @@
     // Default templates
     var defaultTemplates = {
         search: '<div class="trackaticket"><input type="text"><button type="button">Search</button><div class="result"></div></div>',
-        result: '<dl><dt>ID</dt><dd>{{ service_request_id }}</dd><dt>Type</td><dd>{{ service_name }}</dd><dt>Department</dt><dd>{{ agency_responsible }}</dd><dt>Address</dt><dd>{{ address }}<dt>Status</dt><dd>{{ status }}<dt>Resolution</dt><dd></dd></dl>',
+        result: '<dl><dt>ID</dt><dd>{{ service_request_id }}</dd><dt>Type</td><dd>{{ service_name }}</dd><dt>Department</dt><dd>{{ agency_responsible }}</dd><dt>Address</dt><dd>{{ address }}<dt>Status</dt><dd>{{ status }} - {{ status_definition }}<dt>Resolution</dt><dd></dd></dl>',
         error: '<span class="error">Ticket #<b>{{ ticketId }}</b> was not found</span>'
+    };
+
+    // Status definitions - these should be in the template, just not sure how best to do that...
+    var statusDefinitions = {
+        'New': 'A case has been created in the customer service system.',
+        'Open': 'The service department has received the case and placed it in their work order system or placed it in a queue to be assigned/addressed.',
+        'In Progress': 'The service department has assigned the case and actions/activities have taken place.',
+        'Closed': 'The case has been resolved (completed) and/or closed by the servicing department.'
     };
     
     // Compile each of the defaultTemplates but check if it's been overridden in the DOM (via <script data-template="key">) first
@@ -59,6 +67,7 @@
                 }
                 // Otherwise display the result
                 else {
+                    response[0].status_definition = (statusDefinitions[response[0].status] !== undefined) ? statusDefinitions[response[0].status] : '';
                     $('.result', container).html(templates.result(response[0]));
                 }
             });
