@@ -4,7 +4,7 @@
     _.templateSettings = { interpolate: /\{\{(.+?)\}\}/g };
     
     // Set API endpoint
-    var endpoint = 'http://api.phila.gov/staging-open311/v2/';
+    var endpoint = 'http://api.phila.gov/open311/v2/';
     
     // Default templates
     var defaultTemplates = {
