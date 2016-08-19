@@ -57,10 +57,7 @@
             button.button('loading');
             
             // Query the API
-            $.getJSON(endpoint + 'requests/' + ticketId + '.json', function(response) {
-                // Turn off the loading indicator
-                button.button('reset');
-                
+            $.getJSON(endpoint + 'requests/' + ticketId + '.json', function(response) {                
                 // If there's no response or if there's an error, indicate such
                 if(response.length < 1 || response[0].errors) {
                     $('.result', container).html(templates.error({ticketId: ticketId}));
@@ -70,6 +67,11 @@
                     response[0].status_definition = (statusDefinitions[response[0].status] !== undefined) ? statusDefinitions[response[0].status] : '';
                     $('.result', container).html(templates.result(response[0]));
                 }
+            }).fail(function() {
+                $('.result', container).html(templates.error({ticketId: ticketId}));
+            }).always(function() {
+                // Turn off the loading indicator
+                button.button('reset');
             });
         }
         // Prevent the normal form submission behavior
